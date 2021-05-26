@@ -1,0 +1,137 @@
+Script started on Fri 14 May 2021 11:45:47 PM PDT
+[maduchut@athena:21]> touch lab9_10.h
+[maduchut@athena:22]> make
+gcc -c lab10.c -Wall
+lab10.c: In function ‘main’:
+lab10.c:56: warning: unused variable ‘p’
+gcc -c ParseLine.c -Wall
+gcc -c RunExternalCommand.c -Wall
+gcc -c ProcessInput.c -Wall
+gcc -c Redirection.c -Wall
+Redirection.c: In function ‘Redirection’:
+Redirection.c:33: warning: null argument where non-null required (argument 2)
+Redirection.c:33: warning: null argument where non-null required (argument 2)
+Redirection.c:44: warning: statement with no effect
+Redirection.c:47: warning: null argument where non-null required (argument 2)
+Redirection.c:47: warning: null argument where non-null required (argument 2)
+Redirection.c:58: warning: statement with no effect
+gcc -o lab10 lab10.o ParseLine.o RunExternalCommand.o ProcessInput.o Redirection.o -Wall
+[maduchut@athena:23]> lab10
+
+csc60msh> ls > lsout
+Argc = 3 
+Argv 0 = ls 
+Argv 1 = > 
+Argv 2 = lsout 
+Child returned status: 139
+
+
+csc60msh> cat lsout
+Argc = 2 
+Argv 0 = cat 
+Argv 1 = lsout 
+Child returned status: 0
+
+
+csc60msh> ls > lsout > file1
+Argc = 5 
+Argv 0 = ls 
+Argv 1 = > 
+Argv 2 = lsout 
+Argv 3 = > 
+Argv 4 = file1 
+Cannot output to more than one fileChild returned status: 256
+
+
+csc60msh> cat foot .txt
+Argc = 2 
+Argv 0 = cat 
+Argv 1 = foo.txt 
+cat: foo.txt: No such file or directory
+Child returned status: 256
+
+
+csc60msh> > l   ls  < > lsout
+Argc = 2 
+Argv 0 = > 
+Argv 1 = lsout 
+No command entereedChild returned status: 256
+
+
+csc60msh> <lsout
+Argc = 1 
+Argv 0 = <lsout 
+Error on the exec call
+Child returned status: 256
+
+
+csc60msh> wc < lsout
+Argc = 3 
+Argv 0 = wc 
+Argv 1 = < 
+Argv 2 = lsout 
+Child returned status: 139
+
+
+csc60msh> wc , < lsout > wcout
+Argc = 5 
+Argv 0 = wc 
+Argv 1 = < 
+Argv 2 = lsout 
+Argv 3 = > 
+Argv 4 = wcout 
+Child returned status: 139
+
+
+csc60msh> cat wcout
+Argc = 2 
+Argv 0 = cat 
+Argv 1 = wcout 
+Child returned status: 0
+
+
+csc60msh> wc < lsout < wcout
+Argc = 5 
+Argv 0 = wc 
+Argv 1 = < 
+Argv 2 = lsout 
+Argv 3 = < 
+Argv 4 = wcout 
+Cannot input from more than one file.Child returned status: 256
+
+
+csc60msh> cd ..la  /lab1
+Argc = 2 
+Argv 0 = cd 
+Argv 1 = ../lab1 
+
+csc60msh> gcc lab1.c
+Argc = 2 
+Argv 0 = gcc 
+Argv 1 = lab1.c 
+Child returned status: 0
+
+
+csc60msh> a, .out
+Argc = 1 
+Argv 0 = a.out 
+
+Lab 1. 
+
+Hello World.
+Hi, Tobechi Maduchukwu. 
+
+The pessimist sees difficulty in every opportunity. 
+The optomist sees opportunity in every difficulty. 
+-Winston Churchill 
+
+Child returned status: 0
+
+
+csc60msh> exit
+Argc = 1 
+Argv 0 = exit 
+[maduchut@athena:24]> exit
+exit
+
+Script done on Fri 14 May 2021 11:47:48 PM PDT
